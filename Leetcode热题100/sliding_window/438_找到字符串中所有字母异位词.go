@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func findAnagrams(s string, p string) []int {
 	cnt := make([]int, 26)

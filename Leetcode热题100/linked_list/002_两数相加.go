@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	// 有为0的
 	if l1.Val == 0 && l1.Next == nil {
@@ -58,16 +56,8 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	return dynamic.Next
 }
 
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
-
 func main() {
 	result := addTwoNumbers(&ListNode{Val: 2, Next: &ListNode{Val: 4, Next: &ListNode{Val: 3}}}, &ListNode{Val: 5, Next: &ListNode{Val: 6, Next: &ListNode{Val: 4}}})
 	// result是一个链表值
-	for result != nil {
-		fmt.Print(result.Val, " ")
-		result = result.Next
-	}
+	printListNode(result)
 }

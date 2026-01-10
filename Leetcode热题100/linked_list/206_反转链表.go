@@ -1,41 +1,35 @@
 package main
 
 /**
-* Definition for singly-linked list.
-* type ListNode struct {
-*     Val int
-*     Next *ListNode
-* }
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
  */
 
-func getIntersectionNode(headA, headB *ListNode) *ListNode {
-	if headA == nil || headB == nil {
-		return nil
+func reverseList(head *ListNode) *ListNode {
+	cur := head
+	next := &ListNode{}
+	for cur != nil && cur.Next != nil {
+		// 取next
+		tempNext := cur.Next
+		// 改next
+		cur.Next = next
+		// 存 next
+		next = tempNext
+		cur = tempNext
+
 	}
 
-	p1, p2 := headA, headB
-	for p1 != p2 {
-		if p1 != nil {
-			p1 = p1.Next
-		} else {
-			p1 = headB
-		}
-
-		if p2 != nil {
-			p2 = p2.Next
-		} else {
-			p2 = headA
-		}
+	if next != nil {
+		cur.Next = next
 	}
 
-	return p1
-}
-
-type ListNode struct {
-	Val  int
-	Next *ListNode
+	return cur
 }
 
 func main() {
-
+	result := reverseList(&ListNode{Val: 1, Next: &ListNode{Val: 2, Next: &ListNode{Val: 3, Next: &ListNode{Val: 4, Next: &ListNode{Val: 5}}}}})
+	printListNode(result)
 }
